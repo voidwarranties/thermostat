@@ -28,7 +28,6 @@ void loop()
 
     //teller aan en uit zetten. Je kan minstens 1 seconde drukken voor je aan en uit gaat.
     for (int i = 0; i <= 1; i++) {
-	Serial.println(push[i], DEC);
 	if (digitalRead(push[i]) == 1) {
 	    if (count[i] == 0) {
 		count[i] = time;
@@ -56,5 +55,12 @@ void loop()
 		digitalWrite(L1[i], false);
 	    }
 	}
+    if (count[0] > 0 || count[1] > 0){
+        digitalWrite(L2[0], true);
+        digitalWrite(L2[1], true);
+    }else{
+        digitalWrite(L2[0], false);
+        digitalWrite(L2[1], false);      
+    }
     }
 }
